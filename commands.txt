@@ -1,0 +1,8 @@
+python model.py
+docker build -t iris-docker-project .
+docker run -p 5000:5000 iris-docker-project
+
+Invoke-RestMethod -Uri http://localhost:5000/predict `
+  -Method Post `
+  -Headers @{"Content-Type"="application/json"} `
+  -Body '{"features": [5.9, 3.0, 5.1, 1.8]}'
